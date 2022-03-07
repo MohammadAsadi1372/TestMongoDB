@@ -20,8 +20,9 @@ namespace TestMongoDB.Controllers
         [HttpGet]
         public async Task<List<Book>> Get()
         {
-          var result =  await _booksService.GetAsync();
-            return result.Take(500).OrderByDescending(c=>c.Price).ToList();
+
+            var result = await _booksService.GetAsync();
+            return result.Take(500).OrderByDescending(c => c.Price).ToList();
         }
 
         [HttpGet("{id:length(24)}")]
@@ -50,7 +51,6 @@ namespace TestMongoDB.Controllers
         public async Task<IActionResult> PostMany(List<Book> newBooks)
         {
             await _booksService.CreateManyAsync(newBooks);
-
             return CreatedAtAction(nameof(Get), newBooks);
         }
 

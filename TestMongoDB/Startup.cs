@@ -34,6 +34,7 @@ namespace TestMongoDB
                Configuration.GetSection("BookStoreDatabase"));
 
             services.AddSingleton<BooksService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestMongoDB", Version = "v1" });
