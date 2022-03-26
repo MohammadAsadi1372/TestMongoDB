@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  testmongodb:
+    image: ${DOCKER_REGISTRY-}testmongodb
+    build:
+      context: .
+      dockerfile: TestMongoDB/Dockerfile
+    depends_on:
+      - "catalogdb"
+    
+    # Configure a link to Redis
+    links:
+      - "catalogdb"
+
+  catalogdb:
+    # Pull the image from Docker Hub
+    image: mongo:latest
+    
